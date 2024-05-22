@@ -32,7 +32,7 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             implementation(libs.bundles.ktor)
-            implementation(libs.kodein.di)
+            api(libs.kodein.di)
             implementation(libs.kotlinx.serialization.core)
             implementation(libs.kotlinx.serialization.json)
         }
@@ -41,11 +41,23 @@ kotlin {
         }
         androidMain.dependencies {
             implementation(libs.ktor.client.okhttp)
+            implementation(libs.androidx.lifecycle)
+            implementation(libs.androidx.lifecycle.compose)
+            implementation(libs.androidx.lifecycle.runtime.compose)
+            implementation(libs.compose.ui)
+            implementation(libs.compose.ui.tooling.preview)
+            implementation(libs.compose.ui.tooling)
+            implementation(libs.compose.material3)
+            implementation(libs.androidx.activity.compose)
+            implementation(libs.compose.runtime)
+            implementation(libs.coil.compose)
+
         }
         iosMain.dependencies {
             implementation(libs.ktor.client.ios)
         }
     }
+    task("testClasses")
 }
 
 android {
@@ -57,5 +69,11 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
+    }
+    buildFeatures {
+        compose = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = libs.versions.compose.compiler.get()
     }
 }

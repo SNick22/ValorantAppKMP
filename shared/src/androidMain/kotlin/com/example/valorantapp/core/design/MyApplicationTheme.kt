@@ -1,4 +1,4 @@
-package com.example.valorantapp.android
+package com.example.valorantapp.core.design
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.shape.RoundedCornerShape

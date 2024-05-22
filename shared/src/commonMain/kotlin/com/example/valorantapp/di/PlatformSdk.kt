@@ -2,6 +2,7 @@ package com.example.valorantapp.di
 
 import com.example.valorantapp.core.configuration.Configuration
 import com.example.valorantapp.core.network.networkModule
+import com.example.valorantapp.features.agents.agentsModule
 import org.kodein.di.DI
 import org.kodein.di.DirectDI
 import org.kodein.di.LazyDelegate
@@ -22,6 +23,7 @@ object PlatformSdk {
             importAll(
                 createConfigurationModule(conf),
                 networkModule,
+                agentsModule
             )
         }.direct
     }
